@@ -188,7 +188,7 @@ public class MusicStoreGWT implements EntryPoint {
 	    	}
 	    });
 		
-		/*On clicking the Go button*/
+		/*On clicking the Go button of Search Tab*/
 		goButton.addClickHandler(new ClickHandler(){
 	    	public void onClick(ClickEvent event){
 	    		JSONObject json = new JSONObject();
@@ -254,9 +254,9 @@ public class MusicStoreGWT implements EntryPoint {
 	}
 
 	/**
-	 * Call the servlet and send the data in the form to be inserted intoDB
-	 * @param url
-	 * @param postData
+	 * Add song info to the database from the form
+	 * 
+	 * 
 	 */
 	protected void insertFormIntoDB(String url, String postData) {
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
@@ -297,7 +297,7 @@ public class MusicStoreGWT implements EntryPoint {
 	
 	
 	/**
-	 * Testing the doGet
+	 * On the load o fmodule display all the songs in the songlist Panel
 	 * @param url
 	 */
 	private void httprequest (final String url){
@@ -326,7 +326,9 @@ public class MusicStoreGWT implements EntryPoint {
 		}
 	}
 	
-	
+	/*
+	 * Get the reaults of a search of a particular song or band
+	 */
 	private void getSearchResults(final String url,String searchData){
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, URL.encode(url));
 
@@ -355,7 +357,9 @@ public class MusicStoreGWT implements EntryPoint {
 	}
 	
 	
-	
+	/*
+	 * New user account created
+	 */
 	protected void signUpRequest(String url, String postData) {
 		RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, url);
 
@@ -378,6 +382,12 @@ public class MusicStoreGWT implements EntryPoint {
 	    }
 		
 	}
+	
+	/*
+	 *  Get the values of the songs in the list and display it in the songList Panel
+	 *  When a user clicks on "Add to Cart" it is added to the shopping cart and is displayed
+	 *  in the shopping cart panel
+	 */
 	
 	private void parseJSONAndDisplay(String jsonString){
 		 JSONValue jsonValue = JSONParser.parseStrict(jsonString);
@@ -444,7 +454,9 @@ public class MusicStoreGWT implements EntryPoint {
 	}
 	
 	
-	
+	/*
+	 * Get the result of the search and display
+	 */
 	private void parseSearchResultsAndDisplay(String jsonString){
 		 JSONValue jsonValue = JSONParser.parseStrict(jsonString);
 	     JSONArray jsonArray = jsonValue.isArray();
